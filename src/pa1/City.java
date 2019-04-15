@@ -146,11 +146,11 @@ public class City {
         // TODO
         if (rand <= 0.4){
             this.population /= 2;
-            System.out.println("A disaster in " + this.name + " has happened, population was reduced significantly");
+            System.out.println("Random event: A disaster in " + this.name + " has happened, population was reduced significantly");
         }
         else if (rand > 0.4 && rand <= 0.8){
             this.population = (int)(this.population * 1.5);
-            System.out.println("A baby boom in " + this.name + " has happened, population was increased significantly");
+            System.out.println("Random event: A baby boom in " + this.name + " has happened, population was increased significantly");
         }
     }
 
