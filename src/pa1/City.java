@@ -121,6 +121,7 @@ public class City {
         // TODO
         int increment = (int)(Math.round(this.getExcessCrops() * 0.5));
         if (increment < 0){
+            System.out.println("Turn end: " + this.name + "'s population has grown by " + 0);
             return;
         }
         else{
