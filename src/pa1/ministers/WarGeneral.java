@@ -83,11 +83,19 @@ public class WarGeneral extends Minister {
         for(int i=0; i<technologyList.size(); i++){
             techProduct *= technologyList.get(i).getAttackBonus();
         }
+
         attacker.decreaseTroops(Math.min(troops, defender.getTroops()));
         System.out.println(attacker.getName() + " loses " + Math.min(troops, defender.getTroops()) + " troops while attacking");
 
-        defender.decreaseTroops((int)(Math.round((bonus_multiplier * troops * techProduct))));
-        System.out.println(defender.getName() + " loses " + ((int)(Math.round((bonus_multiplier * troops * techProduct)))) + " troops while defending");
+        int lostTroopsByDefender = ((int)(Math.round((bonus_multiplier * troops * techProduct))));
+
+        if(defender.getTroops() >= lostTroopsByDefender){   //if defending city has more number of troops than the troops lost by attacking city
+            defender.decreaseTroops(lostTroopsByDefender);
+        }
+        else{   //if defending city has less number of troops than the troops lost by attacking city
+            defender.decreaseTroops(defender.getTroops());
+        }
+        System.out.println(defender.getName() + " loses " + lostTroopsByDefender + " troops while defending");
     }
 
     /**
